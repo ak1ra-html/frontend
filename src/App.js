@@ -67,12 +67,12 @@ function App() {
       setIsLoggedIn(true);
     }
 
-    fetch("https://backend-sudimampir-production.up.railway.app/menu")
+    fetch("http://localhost:5000/api/menu")
       .then(res => res.json())
       .then(data => setMenuList(data))
       .catch(err => console.error("Gagal load menu:", err));
 
-    fetch("https://backend-sudimampir-production.up.railway.app/api/orders")
+    fetch("http://localhost:5000/api/orders")
       .then(res => res.json())
       .then(data => {
         setOrders(data);
@@ -113,7 +113,7 @@ function App() {
 
   const confirmCloseShift = async () => {
     try {
-      const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/close-shift", {
+      const response = await fetch("http://localhost:5000/api/close-shift", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -139,7 +139,7 @@ function App() {
 
   const fetchHistory = async () => {
     try {
-      const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/history", {
+      const response = await fetch("http://localhost:5000/api/history", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
@@ -156,7 +156,7 @@ function App() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/login", {
+      const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginData)
@@ -216,7 +216,7 @@ function App() {
     formData.append("image", file);
 
     try {
-        const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/upload", {
+        const response = await fetch("http://localhost:5000/api/upload", {
             method: "POST",
             body: formData
         });
@@ -240,7 +240,7 @@ function App() {
 
     try {
       if (editingId) {
-        const response = await fetch(`https://backend-sudimampir-production.up.railway.app/api/menu/${editingId}`, {
+        const response = await fetch(`http://localhost:5000/api/menu/${editingId}`, {
           method: 'PUT',
           headers: {
             "Content-Type": "application/json",
@@ -258,7 +258,7 @@ function App() {
         setMenuList(menuList.map(item => item.id === editingId ? result.menu : item));
         alert("Menu berhasil diperbarui!");
       } else {
-        const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/menu", {
+        const response = await fetch("http://localhost:5000/api/menu", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -291,7 +291,7 @@ function App() {
 
   const handleDeleteMenu = async (id, name) => {
     if (window.confirm(`Yakin ingin menghapus menu "${name}"?`)) {
-      const response = await fetch(`https://backend-sudimampir-production.up.railway.app/api/menu/${id}`, {
+      const response = await fetch(`http://localhost:5000/api/menu/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       });
