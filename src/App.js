@@ -67,12 +67,12 @@ function App() {
       setIsLoggedIn(true);
     }
 
-    fetch("http://localhost:5000/api/menu")
+    fetch("https://backend-sudimampir-production.up.railway.app/api/menu")
       .then(res => res.json())
       .then(data => setMenuList(data))
       .catch(err => console.error("Gagal load menu:", err));
 
-    fetch("http://localhost:5000/api/orders")
+    fetch("https://backend-sudimampir-production.up.railway.app/api/orders")
       .then(res => res.json())
       .then(data => {
         setOrders(data);
@@ -113,7 +113,7 @@ function App() {
 
   const confirmCloseShift = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/close-shift", {
+      const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/close-shift", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -139,7 +139,7 @@ function App() {
 
   const fetchHistory = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/history", {
+      const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/history", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
@@ -156,7 +156,7 @@ function App() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginData)
@@ -216,7 +216,7 @@ function App() {
     formData.append("image", file);
 
     try {
-        const response = await fetch("http://localhost:5000/api/upload", {
+        const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/upload", {
             method: "POST",
             body: formData
         });
@@ -240,7 +240,7 @@ function App() {
 
     try {
       if (editingId) {
-        const response = await fetch(`http://localhost:5000/api/menu/${editingId}`, {
+        const response = await fetch(`https://backend-sudimampir-production.up.railway.app/api/menu/${editingId}`, {
           method: 'PUT',
           headers: {
             "Content-Type": "application/json",
@@ -258,7 +258,7 @@ function App() {
         setMenuList(menuList.map(item => item.id === editingId ? result.menu : item));
         alert("Menu berhasil diperbarui!");
       } else {
-        const response = await fetch("http://localhost:5000/api/menu", {
+        const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/menu", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -291,7 +291,7 @@ function App() {
 
   const handleDeleteMenu = async (id, name) => {
     if (window.confirm(`Yakin ingin menghapus menu "${name}"?`)) {
-      const response = await fetch(`http://localhost:5000/api/menu/${id}`, {
+      const response = await fetch(`https://backend-sudimampir-production.up.railway.app/api/menu/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       });
@@ -313,7 +313,7 @@ function App() {
     }
 
     try {
-        const response = await fetch("http://localhost:5000/api/orders", {
+        const response = await fetch("https://backend-sudimampir-production.up.railway.app/api/orders", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -325,7 +325,7 @@ function App() {
 
         const result = await response.json();
 
-        const resOrders = await fetch("http://localhost:5000/api/orders");
+        const resOrders = await fetch("https://backend-sudimampir-production.up.railway.app/api/orders");
         const dataOrders = await resOrders.json();
         setOrders(dataOrders);
 
@@ -346,7 +346,7 @@ function App() {
 
   const updateStatus = async (orderId, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/orders/${orderId}/status`, {
+      const response = await fetch(`https://backend-sudimampir-production.up.railway.app/api/orders/${orderId}/status`, {
         method: 'PUT',
         headers: {
           "Content-Type": "application/json",
@@ -510,7 +510,7 @@ function App() {
                 <div className="menu-list">
                   {filteredMenu.map(item => (
                     <div key={item.id} className="menu-card">
-                      <img src={`http://localhost:5000${item.image}`} alt={item.name} className="menu-img" />
+                      <img src={`https://backend-sudimampir-production.up.railway.app${item.image}`} alt={item.name} className="menu-img" />
                       <div className="menu-info">
                         <h3>{item.name}</h3>
                         <p className="price">Rp {Number(item?.price || 0).toLocaleString('id-ID')}</p>
@@ -566,7 +566,7 @@ function App() {
                       <label style={{ display: 'block', marginBottom: '5px', fontWeight: '500' }}>Pilih Foto Menu:</label>
                       <input type="file" accept="image/*" onChange={handleImageUpload} className="input-customer" style={{ padding: '10px' }} />
                     </div>
-                    {newMenu.image && <img src={`http://localhost:5000${newMenu.image}`} alt="preview" style={{ width:100, height:100, objectFit:"cover", borderRadius:8 }} />}
+                    {newMenu.image && <img src={`https://backend-sudimampir-production.up.railway.app${newMenu.image}`} alt="preview" style={{ width:100, height:100, objectFit:"cover", borderRadius:8 }} />}
                     <div style={{ display: 'flex', gap: '10px' }}>
                       <button type="submit" className="btn-checkout" style={{ flex: 1, background: editingId ? '#ff9800' : '#4caf50' }}>{editingId ? 'Update Menu' : 'Simpan Menu'}</button>
                       {editingId && <button type="button" className="btn-close" style={{ flex: 1 }} onClick={() => { setNewMenu({ name: '', price: '', category: 'Makanan', image: '' }); setEditingId(null); }}>Batal</button>}
@@ -578,7 +578,7 @@ function App() {
                   {menuList.map(item => (
                     <div key={item.id} className="cart-item" style={{ background: 'white', padding: '15px', borderRadius: '8px', marginBottom: '10px', display: 'flex', justifyContent: 'space-between' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                        <img src={`http://localhost:5000${item.image}`} alt="thumb" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px' }}/>
+                        <img src={`https://backend-sudimampir-production.up.railway.app${item.image}`} alt="thumb" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px' }}/>
                         <div>
                           <strong>{item.name}</strong>
                           <p style={{ margin: 0, color: '#ff9800', fontWeight: 'bold' }}>Rp {Number(item?.price || 0).toLocaleString('id-ID')}</p>
