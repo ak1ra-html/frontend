@@ -508,9 +508,7 @@ body {
 }
 
 /* PENGATURAN KHUSUS PRINTER */
-/* --- GAYA CETAK STRUK (PRINT) YANG DIPERBAIKI --- */
 @media print {
-  /* 1. Sembunyikan SEMUA elemen di body */
   body > * {
     visibility: hidden;
     margin: 0;
@@ -520,35 +518,31 @@ body {
     overflow: visible;
   }
   
-  /* 2. Tampilkan HANYA elemen struk dan anak-anaknya secara paksa */
   #printable-area, #printable-area * {
     visibility: visible !important;
   }
   
-  /* 3. Konfigurasi elemen struk agar memenuhi seluruh halaman cetak dan terlihat rapi */
   #printable-area {
-    position: absolute; /* Posisikan paksa di atas halaman kosong */
+    position: absolute;
     left: 0;
     top: 0;
-    width: 100vw; /* Lebar penuh viewport cetak */
-    height: 100vh; /* Tinggi penuh viewport cetak */
-    margin: 0; /* Matikan margin default browser */
-    padding: 20px; /* Tambahkan sedikit padding di dalam struk */
-    border: none; /* Matikan border dashed */
-    overflow: visible; /* Pastikan semua konten tercetak */
-    background: #fff; /* Pastikan background putih */
-    -webkit-print-color-adjust: exact; /* Pastikan warna latar belakang tercetak */
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    border: none;
+    overflow: visible;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* 4. Pastikan font terlihat jelas pada cetakan */
   .receipt-paper {
-    font-size: 10pt; /* Sesuaikan ukuran font untuk dicetak */
+    font-size: 10pt;
     line-height: 1.2;
     color: black;
   }
   
-  /* Sembunyikan elemen non-cetak yang mungkin ada di dalam area struk (seperti tombol "Print") */
   .no-print-element {
     display: none !important;
   }
@@ -628,15 +622,8 @@ body {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .btn-logout{
@@ -649,342 +636,164 @@ body {
 }
 
 .shift-modal{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:100%;
-
-background:rgba(0,0,0,.55);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-z-index:9999;
-
-backdrop-filter:blur(3px);
-
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.55);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  backdrop-filter:blur(3px);
 }
 
 .shift-card{
-
-width:480px;
-
-background:#fff;
-
-border-radius:18px;
-
-padding:30px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.2);
-
-animation:fadeIn .3s ease;
-
-max-height: 85vh; /* Membatasi tinggi maksimal kotak sebesar 85% dari tinggi layar */
-  overflow-y: auto; /* Otomatis memunculkan scrollbar vertikal jika konten melebihi batas */
-
+  width:480px;
+  background:#fff;
+  border-radius:18px;
+  padding:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  animation:fadeIn .3s ease;
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
-.shift-header{
-
-text-align:center;
-
-}
-
-.shift-header h2{
-
-margin:0;
-
-color:#ff9800;
-
-font-size:30px;
-
-}
-
-.shift-header p{
-
-margin-top:5px;
-
-color:#666;
-
-}
-
-.shift-info{
-
-margin:20px 0;
-
-}
-
-.info-row{
-
-display:flex;
-
-justify-content:space-between;
-
-padding:8px 0;
-
-font-size:16px;
-
-}
-
-.summary-box{
-
-display:flex;
-
-justify-content:space-between;
-
-margin:25px 0;
-
-}
+.shift-header{ text-align:center; }
+.shift-header h2{ margin:0; color:#ff9800; font-size:30px; }
+.shift-header p{ margin-top:5px; color:#666; }
+.shift-info{ margin:20px 0; }
+.info-row{ display:flex; justify-content:space-between; padding:8px 0; font-size:16px; }
+.summary-box{ display:flex; justify-content:space-between; margin:25px 0; }
 
 .summary-item{
-
-width:48%;
-
-background:#fafafa;
-
-padding:20px;
-
-border-radius:12px;
-
-text-align:center;
-
+  width:48%;
+  background:#fafafa;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
 }
-
-.summary-item h3{
-
-font-size:30px;
-
-margin:0;
-
-color:#ff9800;
-
-}
-
-.summary-item p{
-
-margin-top:10px;
-
-color:#666;
-
-}
+.summary-item h3{ font-size:30px; margin:0; color:#ff9800; }
+.summary-item p{ margin-top:10px; color:#666; }
 
 .revenue-box{
-
-background:#ff9800;
-
-padding:18px;
-
-border-radius:12px;
-
-text-align:center;
-
-color:white;
-
-margin-bottom:20px;
-
+  background:#ff9800;
+  padding:18px;
+  border-radius:12px;
+  text-align:center;
+  color:white;
+  margin-bottom:20px;
 }
+.revenue-box h4{ margin:0; font-weight:400; }
+.revenue-box h2{ margin-top:8px; font-size:32px; }
 
-.revenue-box h4{
-
-margin:0;
-
-font-weight:400;
-
-}
-
-.revenue-box h2{
-
-margin-top:8px;
-
-font-size:32px;
-
-}
-
-.thanks-text{
-
-text-align:center;
-
-color:#666;
-
-line-height:1.6;
-
-margin:20px 0;
-
-}
-
-.countdown{
-
-text-align:center;
-
-font-size:18px;
-
-font-weight:bold;
-
-}
-
-.countdown span{
-
-font-size:38px;
-
-color:red;
-
-display:block;
-
-margin:10px 0;
-
-}
+.thanks-text{ text-align:center; color:#666; line-height:1.6; margin:20px 0; }
+.countdown{ text-align:center; font-size:18px; font-weight:bold; }
+.countdown span{ font-size:38px; color:red; display:block; margin:10px 0; }
 
 @keyframes fadeIn{
-
-from{
-
-transform:scale(.8);
-
-opacity:0;
-
+  from{ transform:scale(.8); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
 }
 
-to{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-}
-
-.shift-actions{
-
-display:flex;
-
-justify-content:space-between;
-
-margin-top:25px;
-
-}
+.shift-actions{ display:flex; justify-content:space-between; margin-top:25px; }
 
 .btn-cancel-shift{
-
-width:48%;
-
-padding:12px;
-
-background:#9e9e9e;
-
-color:white;
-
-border:none;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-size:16px;
-
+  width:48%;
+  padding:12px;
+  background:#9e9e9e;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
 }
 
 .btn-confirm-shift{
-
-width:48%;
-
-padding:12px;
-
-background:#f57c00;
-
-color:white;
-
-border:none;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-size:16px;
-
+  width:48%;
+  padding:12px;
+  background:#f57c00;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
 }
 
-.btn-cancel-shift:hover{
+.btn-cancel-shift:hover{ background:#757575; }
+.btn-confirm-shift:hover{ background:#ef6c00; }
 
-background:#757575;
-
-}
-
-.btn-confirm-shift:hover{
-
-background:#ef6c00;
-
-}
-
-.history-page{
-
-padding:20px;
-
-}
-
-.history-card{
-
-background:white;
-
-padding:20px;
-
-margin-bottom:20px;
-
-border-radius:12px;
-
-box-shadow:0 4px 10px rgba(0,0,0,.1);
-
-}
-
-.history-header{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:10px;
-
-}
-
-.history-header span{
-
-color:#888;
-
-font-size:14px;
-
-}
+.history-page{ padding:20px; }
+.history-card{ background:white; padding:20px; margin-bottom:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,.1); }
+.history-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.history-header span{ color:#888; font-size:14px; }
 
 .btn-detail{
-
-margin-top:15px;
-
-padding:10px 18px;
-
-border:none;
-
-background:#ff9800;
-
-color:white;
-
-border-radius:8px;
-
-cursor:pointer;
-
+  margin-top:15px;
+  padding:10px 18px;
+  border:none;
+  background:#ff9800;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-.btn-detail:hover{
+.btn-detail:hover{ background:#ef6c00; }
 
-background:#ef6c00;
+/* =========================================
+   PENGATURAN RESPONSIVE UNTUK LAYAR HP (MOBILE)
+   ========================================= */
+@media screen and (max-width: 768px) {
+  
+  /* 1. Memperbaiki Header agar kontennya rapi */
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    height: auto;
+  }
 
+  /* 2. Mengatur tombol navigasi agar membungkus (wrap) ke bawah */
+  .nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-tabs button {
+    flex: 1 1 calc(50% - 8px); 
+    font-size: 13px; 
+    padding: 10px 5px;
+    text-align: center;
+  }
+
+  /* 3. Menumpuk area Menu Digital dan Keranjang menjadi atas-bawah */
+  .kasir-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .menu-section, .cart-section, .admin-section {
+    width: 100%;
+  }
+
+  /* 4. Merapikan Filter Makanan/Minuman di HP */
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .filter-buttons button {
+    flex: 1;
+  }
+
+  /* 5. Memperbaiki tabel laporan agar bisa digeser (scroll) ke samping tanpa merusak UI */
+  .laporan-section div[style*="overflowX: 'auto'"] {
+    max-width: 100vw;
+  }
 }
