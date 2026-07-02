@@ -67,7 +67,7 @@ function App() {
       setIsLoggedIn(true);
     }
 
-    fetch("https://backend-sudimampir-production.up.railway.app/api/menu")
+    fetch("https://backend-sudimampir-production.up.railway.app/menu")
       .then(res => res.json())
       .then(data => setMenuList(data))
       .catch(err => console.error("Gagal load menu:", err));
@@ -510,7 +510,7 @@ function App() {
                 <div className="menu-list">
                   {filteredMenu.map(item => (
                     <div key={item.id} className="menu-card">
-                      <img src={`https://backend-sudimampir-production.up.railway.app${item.image}`} alt={item.name} className="menu-img" />
+                      <img src={`http://localhost:5000${item.image}`} alt={item.name} className="menu-img" />
                       <div className="menu-info">
                         <h3>{item.name}</h3>
                         <p className="price">Rp {Number(item?.price || 0).toLocaleString('id-ID')}</p>
@@ -566,7 +566,7 @@ function App() {
                       <label style={{ display: 'block', marginBottom: '5px', fontWeight: '500' }}>Pilih Foto Menu:</label>
                       <input type="file" accept="image/*" onChange={handleImageUpload} className="input-customer" style={{ padding: '10px' }} />
                     </div>
-                    {newMenu.image && <img src={`https://backend-sudimampir-production.up.railway.app${newMenu.image}`} alt="preview" style={{ width:100, height:100, objectFit:"cover", borderRadius:8 }} />}
+                    {newMenu.image && <img src={`http://localhost:5000${newMenu.image}`} alt="preview" style={{ width:100, height:100, objectFit:"cover", borderRadius:8 }} />}
                     <div style={{ display: 'flex', gap: '10px' }}>
                       <button type="submit" className="btn-checkout" style={{ flex: 1, background: editingId ? '#ff9800' : '#4caf50' }}>{editingId ? 'Update Menu' : 'Simpan Menu'}</button>
                       {editingId && <button type="button" className="btn-close" style={{ flex: 1 }} onClick={() => { setNewMenu({ name: '', price: '', category: 'Makanan', image: '' }); setEditingId(null); }}>Batal</button>}
@@ -578,7 +578,7 @@ function App() {
                   {menuList.map(item => (
                     <div key={item.id} className="cart-item" style={{ background: 'white', padding: '15px', borderRadius: '8px', marginBottom: '10px', display: 'flex', justifyContent: 'space-between' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                        <img src={`https://backend-sudimampir-production.up.railway.app${item.image}`} alt="thumb" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px' }}/>
+                        <img src={`http://localhost:5000${item.image}`} alt="thumb" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px' }}/>
                         <div>
                           <strong>{item.name}</strong>
                           <p style={{ margin: 0, color: '#ff9800', fontWeight: 'bold' }}>Rp {Number(item?.price || 0).toLocaleString('id-ID')}</p>
